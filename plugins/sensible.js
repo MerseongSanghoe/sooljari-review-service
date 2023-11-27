@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import fp from 'fastify-plugin';
 import * as sensible from '@fastify/sensible';
@@ -11,6 +11,6 @@ import * as sensible from '@fastify/sensible';
 export default fp(async function (fastify, opts) {
   // @ts-ignore
   fastify.register(sensible, {
-    errorHandler: false
-  })
-})
+    errorHandler: false,
+  });
+});
