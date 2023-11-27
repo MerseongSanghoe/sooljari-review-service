@@ -7,11 +7,16 @@ import Review from '#custom/db/reviewSchema.js';
  * @param {*} opts
  */
 export default async function (fastify, opts) {
+  /**
+   * GET all review
+   * TODO: pagination
+   */
   fastify.get('/', async function (request, reply) {
     return await Review.find({});
   });
 
   /**
+   * POST new review
    * @type {fastify.RouteShorthandOptions}
    */
   const postOption = {
@@ -53,6 +58,7 @@ export default async function (fastify, opts) {
   });
 
   /**
+   * GET reviews by alc id
    * @type {fastify.RouteShorthandOptions}
    */
   const getByAlcIdOption = {
@@ -74,6 +80,7 @@ export default async function (fastify, opts) {
   });
 
   /**
+   * GET review by writer id
    * @type {fastify.RouteShorthandOptions}
    */
   const getByWriterIdOption = {
