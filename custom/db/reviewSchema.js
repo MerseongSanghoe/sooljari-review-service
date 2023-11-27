@@ -1,23 +1,21 @@
-'use strict';
-//@ts-check
-
 import mongoose from 'mongoose';
+
+const reviewBlock = {
+  block_type: Number,
+  tags: [String],
+};
 
 const reviewSchema = new mongoose.Schema(
   {
-    alcohol_linked: { type: Boolean },
-    alcohol_linked_id: { type: Number },
+    writer_id: Number,
+    alcohol_linked: Boolean,
+    alcohol_linked_id: Number,
     alcohol_info: {
       title: String,
       category: String,
       degree: Number,
     }, // alcohol_linked가 false인 경우에만 사용
-    reviews: [
-      {
-        block_type: Number,
-        tags: [String],
-      },
-    ],
+    reviews: [reviewBlock],
   },
   {
     timestamps: true,

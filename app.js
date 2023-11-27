@@ -1,6 +1,3 @@
-'use strict';
-//@ts-check
-
 import { join } from 'node:path';
 import { fileURLToPath } from 'url';
 import AutoLoad from '@fastify/autoload';

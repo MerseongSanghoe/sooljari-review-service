@@ -1,6 +1,3 @@
-'use strict';
-//@ts-check
-
 /**
  *
  * @param {import("fastify").FastifyInstance} fastify
