@@ -14,7 +14,7 @@ dotenv.config();
 const options = {}
 
 /**
- * @param {import('fastify/types/instance').FastifyInstance} fastify 
+ * @param {import('fastify').FastifyInstance} fastify 
  * @param {*} opts 
  */
 export default async function (fastify, opts) {

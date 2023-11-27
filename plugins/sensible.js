@@ -9,6 +9,7 @@ import * as sensible from '@fastify/sensible';
  * @see https://github.com/fastify/fastify-sensible
  */
 export default fp(async function (fastify, opts) {
+  // @ts-ignore
   fastify.register(sensible, {
     errorHandler: false
   })
