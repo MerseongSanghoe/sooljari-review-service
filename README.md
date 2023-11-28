@@ -1,5 +1,8 @@
 # Sooljari Review Service
 
+1. docker compose up -d
+2. npm run dev (or npm start)
+
 # Getting Started with [Fastify-CLI](https://www.npmjs.com/package/fastify-cli)
 
 This project was bootstrapped with Fastify-CLI.
