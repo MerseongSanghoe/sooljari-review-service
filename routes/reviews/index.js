@@ -7,12 +7,38 @@ import Review from '#custom/db/reviewSchema.js';
  * @param {*} opts
  */
 export default async function (fastify, opts) {
+  const paginateQuerySchema = {
+    type: 'object',
+    properties: {
+      page: { type: 'number' },
+      size: { type: 'number' },
+    },
+  };
+
   /**
    * GET all review
    * TODO: pagination
+   * @type {fastify.RouteShorthandOptions}
    */
-  fastify.get('/', async function (request, reply) {
-    return await Review.find({});
+  const getOption = {
+    schema: {
+      querystring: paginateQuerySchema,
+    },
+  };
+  fastify.get('/', getOption, async function (request, reply) {
+    // @ts-ignore
+    const { page = 0, size = 10 } = request.query;
+    const count = await Review.countDocuments({});
+
+    return {
+      data: await Review.find({})
+        .sort({ createdAt: -1 })
+        .skip(page * size)
+        .limit(size),
+      page,
+      size,
+      count,
+    };
   });
 
   /**
@@ -57,26 +83,40 @@ export default async function (fastify, opts) {
     return newDoc;
   });
 
+  const idParamsSchema = {
+    type: 'object',
+    required: ['id'],
+    properties: {
+      id: { type: 'number' },
+    },
+  };
+
   /**
    * GET reviews by alc id
    * @type {fastify.RouteShorthandOptions}
    */
   const getByAlcIdOption = {
     schema: {
-      params: {
-        type: 'object',
-        required: ['id'],
-        properties: {
-          id: { type: 'number' },
-        },
-      },
+      querystring: paginateQuerySchema,
+      params: idParamsSchema,
     },
   };
   fastify.get('/byalc/:id', getByAlcIdOption, async (req, reply) => {
     // @ts-ignore
     const { id } = req.params;
+    // @ts-ignore
+    const { page = 0, size = 10 } = req.query;
+    const count = await Review.countDocuments({ alcohol_linked_id: id });
 
-    return await Review.find({ alcohol_linked_id: id });
+    return {
+      data: await Review.find({ alcohol_linked_id: id })
+        .sort({ createdAt: -1 })
+        .skip(page * size)
+        .limit(size),
+      page,
+      size,
+      count,
+    };
   });
 
   /**
@@ -85,19 +125,25 @@ export default async function (fastify, opts) {
    */
   const getByWriterIdOption = {
     schema: {
-      params: {
-        type: 'object',
-        required: ['id'],
-        properties: {
-          id: { type: 'number' },
-        },
-      },
+      querystring: paginateQuerySchema,
+      params: idParamsSchema,
     },
   };
   fastify.get('/bywrt/:id', getByWriterIdOption, async (req, reply) => {
     // @ts-ignore
     const { id } = req.params;
+    // @ts-ignore
+    const { page = 0, size = 10 } = req.query;
+    const count = await Review.countDocuments({ writer_id: id });
 
-    return await Review.find({ writer_id: id });
+    return {
+      data: await Review.find({ writer_id: id })
+        .sort({ createdAt: -1 })
+        .skip(page * size)
+        .limit(size),
+      page,
+      size,
+      count,
+    };
   });
 }
