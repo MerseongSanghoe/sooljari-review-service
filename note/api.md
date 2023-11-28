@@ -26,7 +26,7 @@ const reviewSchema = {
 };
 ```
 
-## GET /reviews
+## GET /review
 
 모든 리뷰를 가져오는 API
 
@@ -59,7 +59,7 @@ const reviewSchema = {
 
 ### Examples
 
-`GET /reviews?page=4&size=2`
+`GET /review?page=4&size=2`
 
 ```json
 {
@@ -103,7 +103,7 @@ const reviewSchema = {
 }
 ```
 
-## POST /reviews
+## POST /review
 
 새로운 리뷰를 작성합니다
 
@@ -130,7 +130,7 @@ const reviewSchema = {
 
 ### Example
 
-`POST /reviews`
+`POST /review`
 
 - Request body
 
@@ -167,7 +167,7 @@ const reviewSchema = {
 }
 ```
 
-## GET /reviews/byalc/:id
+## GET /review/byalc/:id
 
 ID에 해당하는 주류에 관한 리뷰들을 가져오는 API
 
@@ -203,7 +203,7 @@ ID에 해당하는 주류에 관한 리뷰들을 가져오는 API
 
 ### Examples
 
-`GET /reviews/byalc/223?page=2&size=2`
+`GET /review/byalc/223?page=2&size=2`
 
 ```json
 {
@@ -247,7 +247,7 @@ ID에 해당하는 주류에 관한 리뷰들을 가져오는 API
 }
 ```
 
-## GET /reviews/bywrt/:id
+## GET /review/bywrt/:id
 
 ID에 해당하는 유저가 작성한 리뷰들을 가져오는 API
 
@@ -283,7 +283,7 @@ ID에 해당하는 유저가 작성한 리뷰들을 가져오는 API
 
 ### Examples
 
-`GET /reviews/bywrt/1?page=0`
+`GET /review/bywrt/1?page=0`
 
 ```json
 {
