@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "sooljari-review-fastify",
+            "script": "npm",
+            "args": "start"
+        }
+    ]
+}
